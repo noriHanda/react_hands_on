@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./components/NavBar";
+import Quiz from "./screens/Quiz";
+import Top from "./screens/Top";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={Top} />
+          <Route path="/quiz" component={Quiz} />
+          <Route render={() => <h4>not found...</h4>} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
